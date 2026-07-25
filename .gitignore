@@ -1,2 +1,10 @@
 .playwright-mcp/
 node_modules/
+__pycache__/
+*.pyc
+
+# Skills CLI symlinks into .agents/skills/ — core.symlinks is false on this
+# machine, so committing this path would dereference into full duplicate
+# copies of .agents/skills/ instead of a symlink. The real content lives in
+# .agents/skills/; re-run the skills CLI to relink after a fresh clone.
+.claude/skills/
