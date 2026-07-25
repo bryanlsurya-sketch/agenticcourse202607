@@ -27,3 +27,12 @@ Pushes to `main` trigger `.github/workflows/deploy.yml`, which publishes the sit
 ## Note
 
 `FORMSPREE_ENDPOINT` in `script.js` is a placeholder and must be replaced with a real Formspree form ID before the enquiry form will deliver submissions.
+
+## Mascot
+
+```
+    \    /\
+     )  ( ')
+    (  /  )
+     \(__)|
+```
