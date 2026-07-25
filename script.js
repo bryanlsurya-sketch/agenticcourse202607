@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupMobileNav();
   setupSmoothScroll();
   setupEnquiryForm();
+  setupScrollReveal();
 });
 
 function setupMobileNav() {
@@ -82,13 +83,13 @@ function setupEnquiryForm() {
       });
 
       if (response.ok) {
-        showStatus("Thanks! Your message has been sent — we'll be in touch soon.", "success");
+        showStatus("Thanks! Your audit request is in — we'll be in touch within one business day.", "success");
         form.reset();
       } else {
-        showStatus("Something went wrong sending your message. Please try again.", "error");
+        showStatus("Something went wrong sending your request. Please try again.", "error");
       }
     } catch (err) {
-      showStatus("Something went wrong sending your message. Please try again.", "error");
+      showStatus("Something went wrong sending your request. Please try again.", "error");
     } finally {
       setSending(false);
     }
@@ -137,7 +138,7 @@ function setupEnquiryForm() {
 
   function setSending(isSending) {
     submitBtn.disabled = isSending;
-    submitBtnText.textContent = isSending ? "Sending…" : "Send Message";
+    submitBtnText.textContent = isSending ? "Sending…" : "Claim My Free Audit";
   }
 
   function showStatus(message, state) {
@@ -149,4 +150,49 @@ function setupEnquiryForm() {
     statusEl.textContent = "";
     statusEl.removeAttribute("data-state");
   }
+}
+
+function setupScrollReveal() {
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const revealEls = document.querySelectorAll(".reveal");
+  if (prefersReducedMotion || !("IntersectionObserver" in window) || revealEls.length === 0) return;
+
+  revealEls.forEach((el) => el.classList.add("pre-reveal"));
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.remove("pre-reveal");
+        animateCounters(entry.target);
+        observer.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.2, rootMargin: "0px 0px -40px 0px" }
+  );
+
+  revealEls.forEach((el) => observer.observe(el));
+}
+
+function animateCounters(container) {
+  const counters = container.querySelectorAll("[data-count-to]");
+  const duration = 900;
+
+  counters.forEach((counter) => {
+    if (counter.dataset.counted) return;
+    counter.dataset.counted = "true";
+
+    const target = parseFloat(counter.dataset.countTo);
+    const suffix = counter.dataset.suffix || "";
+    const start = performance.now();
+
+    function tick(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      counter.textContent = `${Math.round(target * eased)}${suffix}`;
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+
+    requestAnimationFrame(tick);
+  });
 }

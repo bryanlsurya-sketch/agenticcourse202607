@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bryanlsurya-sketch.github.io/agenticcourse202607/sitemap.xml
