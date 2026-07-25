@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupSmoothScroll();
   setupEnquiryForm();
   setupScrollReveal();
+  setupWhatsAppWidget();
 });
 
 function setupMobileNav() {
@@ -84,6 +85,7 @@ function setupEnquiryForm() {
 
       if (response.ok) {
         showStatus("Thanks! Your audit request is in — we'll be in touch within one business day.", "success");
+        speakConfirmation();
         form.reset();
       } else {
         showStatus("Something went wrong sending your request. Please try again.", "error");
@@ -97,10 +99,12 @@ function setupEnquiryForm() {
 
   function validateForm() {
     let isValid = true;
+    let firstInvalidField = null;
 
     if (!fields.name.input.value.trim()) {
       setFieldError(fields.name, "Please enter your name.");
       isValid = false;
+      firstInvalidField = firstInvalidField || fields.name.input;
     } else {
       clearFieldError(fields.name);
     }
@@ -109,9 +113,11 @@ function setupEnquiryForm() {
     if (!emailValue) {
       setFieldError(fields.email, "Please enter your email.");
       isValid = false;
+      firstInvalidField = firstInvalidField || fields.email.input;
     } else if (!emailPattern.test(emailValue)) {
       setFieldError(fields.email, "Please enter a valid email address.");
       isValid = false;
+      firstInvalidField = firstInvalidField || fields.email.input;
     } else {
       clearFieldError(fields.email);
     }
@@ -119,9 +125,12 @@ function setupEnquiryForm() {
     if (!fields.message.input.value.trim()) {
       setFieldError(fields.message, "Please enter a message.");
       isValid = false;
+      firstInvalidField = firstInvalidField || fields.message.input;
     } else {
       clearFieldError(fields.message);
     }
+
+    if (firstInvalidField) firstInvalidField.focus();
 
     return isValid;
   }
@@ -150,6 +159,17 @@ function setupEnquiryForm() {
     statusEl.textContent = "";
     statusEl.removeAttribute("data-state");
   }
+
+  function speakConfirmation() {
+    if (!("speechSynthesis" in window)) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const utterance = new SpeechSynthesisUtterance(
+      "Thank you for your submission. We will get back to you in 3 business days."
+    );
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(utterance);
+  }
 }
 
 function setupScrollReveal() {
@@ -172,6 +192,45 @@ function setupScrollReveal() {
   );
 
   revealEls.forEach((el) => observer.observe(el));
+}
+
+function setupWhatsAppWidget() {
+  const widget = document.getElementById("waWidget");
+  const fab = document.getElementById("waFab");
+  const panel = document.getElementById("waPanel");
+  const closeBtn = document.getElementById("waPanelClose");
+  if (!widget || !fab || !panel || !closeBtn) return;
+
+  function openPanel() {
+    panel.hidden = false;
+    fab.setAttribute("aria-expanded", "true");
+  }
+
+  function closePanel() {
+    panel.hidden = true;
+    fab.setAttribute("aria-expanded", "false");
+  }
+
+  fab.addEventListener("click", () => {
+    if (panel.hidden) {
+      openPanel();
+    } else {
+      closePanel();
+    }
+  });
+
+  closeBtn.addEventListener("click", closePanel);
+
+  document.addEventListener("click", (event) => {
+    if (!panel.hidden && !widget.contains(event.target)) closePanel();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !panel.hidden) {
+      closePanel();
+      fab.focus();
+    }
+  });
 }
 
 function animateCounters(container) {

@@ -294,6 +294,35 @@
     </div>
   </footer>
 
+  <div class="wa-widget" id="waWidget">
+    <div class="wa-panel hud-frame" id="waPanel" role="dialog" aria-label="Chat with Momentum on WhatsApp" hidden>
+      <div class="wa-panel__header">
+        <span class="wa-panel__status" aria-hidden="true"></span>
+        <div class="wa-panel__heading">
+          <p class="wa-panel__title">Momentum</p>
+          <p class="wa-panel__subtitle">Usually replies within a few hours</p>
+        </div>
+        <button type="button" class="wa-panel__close" id="waPanelClose" aria-label="Close chat">&times;</button>
+      </div>
+
+      <p class="wa-panel__prompt">Chat with us on WhatsApp. Pick a question to get started:</p>
+
+      <div class="wa-panel__queries">
+        <a class="wa-query" href="https://wa.me/6582924494?text=Hi%2C%20I%27d%20like%20a%20free%20growth%20audit." target="_blank" rel="noopener">I'd like a free growth audit</a>
+        <a class="wa-query" href="https://wa.me/6582924494?text=Hi%2C%20what%20services%20does%20Momentum%20offer%3F" target="_blank" rel="noopener">What services do you offer?</a>
+        <a class="wa-query" href="https://wa.me/6582924494?text=Hi%2C%20I%20have%20a%20question%20about%20pricing." target="_blank" rel="noopener">I have a question about pricing</a>
+        <a class="wa-query" href="https://wa.me/6582924494?text=Hi%2C%20I%27d%20like%20to%20book%20a%20call." target="_blank" rel="noopener">I'd like to book a call</a>
+      </div>
+    </div>
+
+    <button type="button" class="wa-fab" id="waFab" aria-haspopup="dialog" aria-expanded="false" aria-controls="waPanel" aria-label="Chat with us on WhatsApp">
+      <svg class="wa-fab__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+        <path d="M12.004 2c-5.514 0-9.997 4.483-9.997 9.997 0 1.763.463 3.485 1.343 5.003L2 22l5.146-1.349a9.96 9.96 0 004.858 1.237h.004c5.514 0 9.997-4.483 9.997-9.997C22 6.483 17.518 2 12.004 2zm0 18.219a8.19 8.19 0 01-4.174-1.14l-.3-.178-3.06.801.816-2.983-.195-.307a8.196 8.196 0 01-1.262-4.415c0-4.523 3.68-8.203 8.203-8.203 4.522 0 8.203 3.68 8.203 8.203-.001 4.523-3.681 8.222-8.231 8.222z"/>
+      </svg>
+    </button>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
