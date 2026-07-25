@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Momentum &mdash; Marketing That Moves the Needle</title>
+  <meta name="description" content="Momentum is a marketing consultancy that helps ambitious brands grow through strategy, creative, and performance marketing." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav container">
+      <a href="#home" class="nav__brand">Momentum</a>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="nav__links" id="navLinks">
+        <a href="#home" class="nav__link">Home</a>
+        <a href="#testimonials" class="nav__link">Testimonials</a>
+        <a href="#contact" class="nav__link">Contact</a>
+        <a href="#contact" class="btn btn--primary btn--small nav__cta">Get in Touch</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="hero__glow" aria-hidden="true"></div>
+      <div class="container hero__content">
+        <p class="eyebrow">Marketing Consultancy</p>
+        <h1 class="hero__headline">Marketing That Moves the Needle</h1>
+        <p class="hero__subheadline">
+          We partner with ambitious brands to turn strategy into growth &mdash; blending data,
+          creative, and performance marketing into campaigns that actually deliver.
+        </p>
+        <div class="hero__actions">
+          <a href="#contact" class="btn btn--primary btn--large" id="heroCta">Start a Conversation</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+      <div class="container">
+        <p class="eyebrow eyebrow--center">Client Success</p>
+        <h2 class="section-title">What Our Clients Say</h2>
+        <p class="section-subtitle">
+          Real results from brands who trusted us to grow their business.
+        </p>
+
+        <div class="testimonial-grid">
+          <article class="testimonial-card">
+            <div class="testimonial-card__avatar" aria-hidden="true">JR</div>
+            <p class="testimonial-card__quote">
+              &ldquo;Momentum rebuilt our entire acquisition funnel in under three months.
+              Our cost per lead dropped 42% and quality went up. It's the best marketing
+              investment we've made.&rdquo;
+            </p>
+            <div class="testimonial-card__meta">
+              <p class="testimonial-card__name">Jordan Reyes</p>
+              <p class="testimonial-card__role">VP of Growth, Northwind Supply Co.</p>
+            </div>
+          </article>
+
+          <article class="testimonial-card">
+            <div class="testimonial-card__avatar" aria-hidden="true">AK</div>
+            <p class="testimonial-card__quote">
+              &ldquo;They didn't just run campaigns &mdash; they understood our brand and challenged
+              us to think bigger. Revenue from paid channels doubled year over year.&rdquo;
+            </p>
+            <div class="testimonial-card__meta">
+              <p class="testimonial-card__name">Amara Khan</p>
+              <p class="testimonial-card__role">Founder &amp; CEO, Bloomfield Studio</p>
+            </div>
+          </article>
+
+          <article class="testimonial-card">
+            <div class="testimonial-card__avatar" aria-hidden="true">TM</div>
+            <p class="testimonial-card__quote">
+              &ldquo;Responsive, strategic, and genuinely invested in our results. The team feels
+              like an extension of ours, not an outside agency.&rdquo;
+            </p>
+            <div class="testimonial-card__meta">
+              <p class="testimonial-card__name">Theo Marsh</p>
+              <p class="testimonial-card__role">Head of Marketing, Fernwell Health</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="contact__intro">
+          <p class="eyebrow eyebrow--center">Let's Talk</p>
+          <h2 class="section-title">Tell Us About Your Goals</h2>
+          <p class="section-subtitle">
+            Share a few details and we'll get back to you within one business day.
+          </p>
+        </div>
+
+        <!-- TODO: Replace {YOUR_FORM_ID} below with your real Formspree form ID before going live. -->
+        <form id="enquiryForm" class="enquiry-form" novalidate>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="name">Name <span class="required">*</span></label>
+              <input type="text" id="name" name="name" autocomplete="name" required />
+              <span class="form-error" id="nameError"></span>
+            </div>
+
+            <div class="form-field">
+              <label for="email">Email <span class="required">*</span></label>
+              <input type="email" id="email" name="email" autocomplete="email" required />
+              <span class="form-error" id="emailError"></span>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="company">Company <span class="optional">(optional)</span></label>
+            <input type="text" id="company" name="company" autocomplete="organization" />
+          </div>
+
+          <div class="form-field">
+            <label for="message">Message <span class="required">*</span></label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+            <span class="form-error" id="messageError"></span>
+          </div>
+
+          <div class="form-submit">
+            <button type="submit" class="btn btn--primary btn--large" id="submitBtn">
+              <span id="submitBtnText">Send Message</span>
+            </button>
+            <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer__content">
+      <p>&copy; 2026 Momentum Marketing Consultancy. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
