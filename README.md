@@ -38,6 +38,7 @@ Vanilla HTML/CSS/JS only — no framework, no build step, no package manager.
 | `index.html` | All markup — sticky nav, hero, testimonials grid, enquiry form, footer |
 | `styles.css` | All styling — theme variables live in the `:root` custom-properties block |
 | `script.js` | All behavior — mobile nav toggle, smooth scroll, enquiry form validation/submission |
+| `assets/images/` | Hero and testimonial photography (duotone-treated to match the coral accent) |
 | `.github/workflows/deploy.yml` | GitHub Actions workflow that publishes the site to GitHub Pages on push to `main` |
 
 ---
@@ -57,12 +58,6 @@ python -m http.server
 | Trigger | Action | Result |
 |---|---|---|
 | Push to `main` | `.github/workflows/deploy.yml` runs | Site published to GitHub Pages |
-
----
-
-## Note
-
-> `FORMSPREE_ENDPOINT` in `script.js` is a placeholder and must be replaced with a real Formspree form ID before the enquiry form will deliver submissions.
 
 ---
 
