@@ -245,9 +245,42 @@ button {
   pointer-events: none;
 }
 
+.hero__grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: var(--space-6);
+}
+
 .hero__content {
   position: relative;
   max-width: 760px;
+}
+
+.hero__frame {
+  position: relative;
+}
+
+.hero__frame::before {
+  content: "";
+  position: absolute;
+  inset: var(--space-3) calc(-1 * var(--space-3)) calc(-1 * var(--space-3)) var(--space-3);
+  background: var(--color-coral);
+  clip-path: polygon(0 0, 100% 0, 100% 88%, 88% 100%, 0 100%);
+  z-index: 0;
+}
+
+.hero__image {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 8 / 5;
+  object-fit: cover;
+  object-position: center 78%;
+  clip-path: polygon(0 0, 100% 0, 100% 88%, 88% 100%, 0 100%);
+  filter: grayscale(0.4) contrast(1.05) brightness(0.85) sepia(0.25) hue-rotate(-14deg) saturate(1.8);
 }
 
 .hero__headline {
@@ -303,13 +336,9 @@ button {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: var(--color-coral);
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 0.85rem;
+  object-fit: cover;
+  border: 2px solid var(--color-coral);
+  filter: grayscale(0.4) contrast(1.05) brightness(0.9) sepia(0.25) hue-rotate(-14deg) saturate(1.8);
 }
 
 .testimonial-card__quote {
@@ -509,5 +538,9 @@ button {
 @media (min-width: 860px) {
   .testimonial-grid {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .hero__grid {
+    grid-template-columns: 1.1fr 0.9fr;
   }
 }
