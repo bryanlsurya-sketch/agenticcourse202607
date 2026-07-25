@@ -25,6 +25,12 @@ Vanilla HTML/CSS/JS only — no framework, no build step, no package manager.
 
 ---
 
+## Screenshot
+
+![Momentum site screenshot](assets/screenshot.png)
+
+---
+
 ## Structure
 
 | File | Responsibility |
